@@ -1,0 +1,264 @@
+<style>
+    
+html {
+    scroll-behavior: smooth;
+  }
+  /*For form and items*/
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  /* Navigation menu */
+  
+  nav {
+      z-index: 10;
+      padding: 24px 16px;
+      font-family: "Raleway";
+      position: fixed;
+      width: 102%;
+      transition: 0.6s;
+      background-color: none;
+      height: 100px;
+      background: #172830;
+      margin-top: -150px;
+      margin-left: -22px;
+    }
+    
+    nav.scrolled {
+      background: #172830;
+      box-shadow: 0px 4px 4px 0px rgba(50, 50, 50, 0.1);
+    }
+    
+    nav.scrolled + .logo img {
+      height: 60px;
+    }
+    
+    nav ul {
+      display: flex;
+      justify-content: flex-end;
+      list-style: none;
+    }
+    
+    nav ul a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 100px;
+      font-family: "Cormorant Garamond", serif;
+      margin: 0 28px;
+      font-size: 17px;
+      text-transform: uppercase;
+    }
+    
+    /*=====DROPDOWN===*/
+    ul {
+      text-align: left;
+      display: inline;
+      margin: 0;
+      padding: 15px 4px 17px 0;
+      list-style: none;
+    }
+    ul li {
+      font: bold 12px/18px sans-serif;
+      display: inline-block;
+      margin-right: -4px;
+      position: relative;
+      padding: 15px 20px;
+      /* background: #172830; */
+      cursor: pointer;
+      -webkit-transition: all 0.2s;
+      -moz-transition: all 0.2s;
+      -ms-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      transition: all 0.2s;
+    }
+    ul li:hover {
+      /* background: #172830; */
+      color: #666;
+    }
+    ul li ul {
+      padding: 0;
+      position: absolute;
+      top: 48px;
+      left: 0;
+      width: 150px;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      display: none;
+      opacity: 0;
+      visibility: hidden;
+      /* -webkit-transiton: opacity 0.2s;
+      -moz-transition: opacity 0.2s;
+      -ms-transition: opacity 0.2s;
+      -o-transition: opacity 0.2s; */
+      -transition: opacity 0.2s;
+    }
+    ul li ul li {
+      background: #172830;
+      display: block;
+      color: #fff;
+      text-shadow: 0 -1px 0 #000;
+    }
+    ul li ul li:hover {
+      background: grey;
+    }
+    ul li:hover ul {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+    }
+    .listRight {
+      left: auto !important;
+      right: 0 !important;
+    }
+    
+    /*===DROPDOWN ENDS====*/
+  
+  /* Menu Icon */
+  .menu-btn {
+    display: none;
+  }
+  
+  /* Footer */
+  
+  footer {
+    padding: 32px 0;
+    background: #dcedc8;
+    color: #000;
+    font-family: "Raleway";
+    text-align: center;
+    margin-top: 250px;
+  }
+  
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+  @media (max-width: 800px) {
+    .row {
+      flex-direction: column-reverse;
+    }
+    .col-25 {
+      margin-bottom: 20px;
+    }
+  
+    /*Navigation*/
+    nav {
+      display: flex;
+      height: 100vh;
+      transform: scaleY(0) translateY(1200px);
+      background: #172830;
+      transition: 0.4s;
+      position: fixed;
+    }
+  
+    nav.active {
+      transform: scaleY(1) translateY(0px);
+    }
+  
+    nav ul {
+      margin: 0 auto;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+    }
+  
+    nav ul li {
+      padding: 42px 0;
+    }
+  
+    nav li a {
+      font-size: 20px;
+      position: relative;
+    }
+  
+    nav li a:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 24px;
+      width: 60%;
+      margin: 0 auto;
+      border-bottom: 1px solid black;
+    }
+  
+    .menu-btn {
+      z-index: 10;
+      color: #474747;
+      display: block;
+      position: fixed;
+      right: 16px;
+      top: 16px;
+      font-size: 40px;
+      transition: 0.4s;
+      font-family: "Roboto Slab";
+      cursor: pointer;
+      transform: rotate(0deg);
+    }
+  
+    .menu-btn.active {
+      transform: rotate(45deg);
+    }
+  }
+    
+  @media only screen and (max-width: 800px){
+    nav ul{
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background: #172830;
+        opacity: 0.8;
+        width: 100%;
+        overflow: hidden;
+        transition: max-height 0.6s;
+    }
+    nav ul li{
+      display: block;
+      margin-bottom: 10px;
+      margin-right: 50px;
+      margin-top: 10px;
+  }
+  nav ul li a{
+      color: whitesmoke;
+  }
+  
+  .menu-icon{
+      display: block;
+      cursor: pointer;
+  }
+  
+  }
+
+
+
+  .order h1
+  {
+    margin-left:  20px;
+    margin-top: 150px;
+    font-size: 20pt;
+  }
+
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 90%;
+    border: 1px solid rgb(0, 0, 0);
+    margin-bottom: 20px;
+    margin-left: 20px;
+  
+  }
+  .order table
+  {
+      width: 70%;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  tr:nth-child(even){background-color: #f2f2f2}
+  
+  
+</style>

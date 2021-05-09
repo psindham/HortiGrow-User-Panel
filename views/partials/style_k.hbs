@@ -1,0 +1,311 @@
+<style>
+    
+html {
+  scroll-behavior: smooth;
+}
+/*For form and items*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Navigation menu */
+
+nav {
+    z-index: 10;
+    padding: 24px 16px;
+    font-family: "Raleway";
+    position: fixed;
+    width: 100%;
+    transition: 0.6s;
+    background-color: none;
+    height: 100px;
+    margin-top: -50px;
+    background: #172830;
+  }
+  
+  nav.scrolled {
+    background: #172830;
+    box-shadow: 0px 4px 4px 0px rgba(50, 50, 50, 0.1);
+  }
+  
+  nav.scrolled + .logo img {
+    height: 60px;
+  }
+  
+  nav ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+  }
+  
+  nav ul a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 100px;
+    font-family: "Cormorant Garamond", serif;
+    margin: 0 28px;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+  
+  /*=====DROPDOWN===*/
+  ul {
+    text-align: left;
+    display: inline;
+    margin: 0;
+    padding: 15px 4px 17px 0;
+    list-style: none;
+  }
+  ul li {
+    font: bold 12px/18px sans-serif;
+    display: inline-block;
+    margin-right: -4px;
+    position: relative;
+    padding: 15px 20px;
+    /* background: #172830; */
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+  }
+  ul li:hover {
+    /* background: #172830; */
+    color: #666;
+  }
+  ul li ul {
+    padding: 0;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 150px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    /* -webkit-transiton: opacity 0.2s;
+    -moz-transition: opacity 0.2s;
+    -ms-transition: opacity 0.2s;
+    -o-transition: opacity 0.2s; */
+    -transition: opacity 0.2s;
+  }
+  ul li ul li {
+    background: #172830;
+    display: block;
+    color: #fff;
+    text-shadow: 0 -1px 0 #000;
+  }
+  ul li ul li:hover {
+    background: grey;
+  }
+  ul li:hover ul {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+  .listRight {
+    left: auto !important;
+    right: 0 !important;
+  }
+  
+  /*===DROPDOWN ENDS====*/
+
+/* Menu Icon */
+.menu-btn {
+  display: none;
+}
+
+/* Footer */
+
+footer {
+  padding: 32px 0;
+  background: #dcedc8;
+  color: #000;
+  font-family: "Raleway";
+  text-align: center;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+
+  /*Navigation*/
+  nav {
+    display: flex;
+    height: 100vh;
+    transform: scaleY(0) translateY(1200px);
+    background: #172830;
+    transition: 0.4s;
+    position: fixed;
+  }
+
+  nav.active {
+    transform: scaleY(1) translateY(0px);
+  }
+
+  nav ul {
+    margin: 0 auto;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  nav ul li {
+    padding: 42px 0;
+  }
+
+  nav li a {
+    font-size: 20px;
+    position: relative;
+  }
+
+  nav li a:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 24px;
+    width: 60%;
+    margin: 0 auto;
+    border-bottom: 1px solid black;
+  }
+
+  .menu-btn {
+    z-index: 10;
+    color: #474747;
+    display: block;
+    position: fixed;
+    right: 16px;
+    top: 16px;
+    font-size: 40px;
+    transition: 0.4s;
+    font-family: "Roboto Slab";
+    cursor: pointer;
+    transform: rotate(0deg);
+  }
+
+  .menu-btn.active {
+    transform: rotate(45deg);
+  }
+}
+
+*{
+  box-sizing:border-box;
+  -moz-box-sizing:border-box;
+}
+#wrap{
+	width: 90%;
+	max-width: 1100px;
+	margin: 50px auto;
+    padding-top: 100px;
+}
+
+.columns_2 figure{
+  width:49%;
+  margin-right:1%;
+}
+.columns_2 figure:nth-child(2){
+ margin-right: 0;
+}
+.columns_3 figure{
+  width:32%;
+  margin-right:1%;
+}
+.columns_3 figure:nth-child(3){
+ margin-right: 0;
+}
+.columns_4 figure{
+  width:24%;
+  margin-right:1%;
+}
+.columns_4 figure:nth-child(4){
+ margin-right: 0;
+}
+.columns_5 figure{
+  width:19%;
+  margin-right:1%;
+}
+.columns_5 figure:nth-child(5){
+ margin-right: 0;
+}
+#columns figure:hover{
+  -webkit-transform: scale(1.1);
+  -moz-transform:scale(1.1);
+  transform: scale(1.1);
+ 
+ }
+#columns:hover figure:not(:hover) {
+ opacity: 0.75;
+}
+div#columns figure {
+  display: inline-block;
+  background: #FEFEFE;
+  border: 2px solid #FAFAFA;
+  box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+  margin: 15px 0px 15px;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  column-break-inside: avoid;
+  padding: 15px;
+  padding-bottom: 5px;
+  background: -webkit-linear-gradient(45deg, #FFF, #F9F9F9);
+  opacity: 1;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+ }
+
+div#columns figure img {
+ width: 100%;
+ border-bottom: 1px solid #ccc;
+ padding-bottom: 15px;
+ margin-bottom: 5px;
+}
+
+div#columns figure figcaption {
+ font-size: .9rem;
+ color: #444;
+ line-height: 1.5;
+ height:50px;
+ font-weight:600;
+ text-overflow:ellipsis;
+ font-family: 'Original Surfer', cursive;
+}
+
+a.button{
+ padding:10px;
+ background:#dcedc8; /*#, dcedc8*/
+ margin:25px;
+ display:block;
+ text-align:center;
+ color:#2b5929;
+ transition:all 1s linear;
+ text-decoration:none;
+ text-shadow:1px 1px 3px rgba(0,0,0,0.3);
+ border-radius:3px;
+ border-bottom:3px solid #2b5929;
+ box-shadow:1px 1px 3px rgba(0,0,0,0.3);
+ font-family: 'Original Surfer', cursive;
+}
+a.button:hover{
+ background:#2b5929;
+ border-bottom:3px solid #dcedc8;
+ color:#f1f2f3;
+}
+
+
+
+</style>

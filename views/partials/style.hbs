@@ -1,0 +1,320 @@
+<style>
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+p {
+  line-height: 2;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial;
+  font-size: 17px;
+  margin: 0;
+}
+
+/* Navigation menu */
+
+nav {
+  z-index: 10;
+  padding: 24px 16px;
+  font-family: "Raleway";
+  position: fixed;
+  width: 100%;
+  transition: 0.6s;
+  background-color: none;
+  height: 100px;
+}
+
+nav.scrolled {
+  background: #172830;
+  box-shadow: 0px 4px 4px 0px rgba(50, 50, 50, 0.1);
+}
+
+nav.scrolled + .logo img {
+  height: 60px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 100px;
+  font-family: "Cormorant Garamond", serif;
+  margin: 0 28px;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+/*=====DROPDOWN===*/
+ul {
+  text-align: left;
+  display: inline;
+  margin: 0;
+  padding: 15px 4px 17px 0;
+  list-style: none;
+}
+ul li {
+  font: bold 12px/18px sans-serif;
+  display: inline-block;
+  margin-right: -4px;
+  position: relative;
+  padding: 15px 20px;
+  /* background: #172830; */
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+ul li:hover {
+  /* background: #172830; */
+  color: #666;
+}
+ul li ul {
+  padding: 0;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 150px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  /* -webkit-transiton: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s; */
+  -transition: opacity 0.2s;
+}
+ul li ul li {
+  background: #172830;
+  display: block;
+  color: #fff;
+  text-shadow: 0 -1px 0 #000;
+}
+ul li ul li:hover {
+  background: grey;
+}
+ul li:hover ul {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+.listRight {
+  left: auto !important;
+  right: 0 !important;
+}
+
+/*===DROPDOWN ENDS====*/
+
+/* Header */
+header {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("/plant_img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header h1 {
+  font-family: "Cormorant Garamond", serif;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 20;
+  font-size: 120px;
+}
+
+/* Sections */
+
+section {
+  height: 400px;
+  display: flex;
+}
+
+.section-follow {
+  height: 160px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.section-follow .follow-me:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 150px;
+  height: 44px;
+  margin: 0 auto;
+  border-bottom: 1px solid #929292;
+}
+
+section h3 {
+  font-family: "Raleway";
+  font-size: 32px;
+  padding: 16px 0;
+}
+
+section:nth-child(2n) {
+  flex-direction: row-reverse;
+  background: #dcedc8;
+  color: #000;
+}
+
+section p {
+  font-family: "Roboto Slab";
+}
+
+section .description,
+section .image {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 32px;
+  justify-content: center;
+}
+
+section .image img {
+  height: 340px;
+}
+
+section .image {
+  border-radius: 160px;
+  overflow: hidden;
+  transition: 1s;
+}
+
+section .image:hover {
+  transform: scale(1.04);
+}
+
+/* Footer */
+
+footer {
+  padding: 32px 0;
+  background: #dcedc8;
+  color: #000;
+  font-family: "Raleway";
+  text-align: center;
+}
+
+.menu-btn {
+  display: none;
+}
+
+/* Media Queries */
+
+@media (max-width: 900px) {
+  header h1 {
+    font-size: 72px;
+  }
+
+  nav {
+    display: flex;
+    height: 100vh;
+    transform: scaleY(0) translateY(1200px);
+    background: rgba(255, 255, 255, 0.8);
+    transition: 0.4s;
+  }
+
+  nav.active {
+    transform: scaleY(1) translateY(0px);
+  }
+
+  nav ul {
+    margin: 0 auto;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  nav ul li {
+    padding: 42px 0;
+  }
+
+  nav li a {
+    font-size: 20px;
+    position: relative;
+  }
+
+  nav li a:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 24px;
+    width: 60%;
+    margin: 0 auto;
+    border-bottom: 1px solid black;
+  }
+
+  /* Follow Me Section */
+
+  .section-follow .follow-me:after {
+    width: 120px;
+    height: 36px;
+  }
+
+  /* Sections */
+
+  section h3 {
+    font-size: 24px;
+  }
+
+  section {
+    flex-direction: column;
+    height: auto;
+    text-align: center;
+  }
+
+  section:nth-child(2n) {
+    flex-direction: column;
+  }
+
+  section .image img {
+    margin: 0 auto;
+    width: 95%;
+    height: auto;
+  }
+
+  /* Menu Icon */
+  .menu-btn {
+    z-index: 10;
+    color: #474747;
+    display: block;
+    position: fixed;
+    right: 16px;
+    top: 16px;
+    font-size: 64px;
+    transition: 0.4s;
+    font-family: "Roboto Slab";
+    cursor: pointer;
+    transform: rotate(0deg);
+  }
+
+  .menu-btn.active {
+    transform: rotate(45deg);
+  }
+}
+
+select {
+  font-family: "Font Awesome\ 5 Brands", "arial";
+}
+</style>

@@ -1,0 +1,480 @@
+<style>
+
+html {
+    scroll-behavior: smooth;
+  }
+  /*For form and items*/
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  /* Navigation menu */
+  
+  nav {
+      z-index: 10;
+      padding: 24px 16px;
+      font-family: "Raleway";
+      position: fixed;
+      width: 102%;
+      transition: 0.6s;
+      background-color: none;
+      height: 100px;
+      background: #172830;
+      margin-top: -150px;
+      margin-left: -22px;
+    }
+    
+    nav.scrolled {
+      background: #172830;
+      box-shadow: 0px 4px 4px 0px rgba(50, 50, 50, 0.1);
+    }
+    
+    nav.scrolled + .logo img {
+      height: 60px;
+    }
+    
+    nav ul {
+      display: flex;
+      justify-content: flex-end;
+      list-style: none;
+    }
+    
+    nav ul a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 100px;
+      font-family: "Cormorant Garamond", serif;
+      margin: 0 28px;
+      font-size: 17px;
+      text-transform: uppercase;
+    }
+    
+    /*=====DROPDOWN===*/
+    ul {
+      text-align: left;
+      display: inline;
+      margin: 0;
+      padding: 15px 4px 17px 0;
+      list-style: none;
+    }
+    ul li {
+      font: bold 12px/18px sans-serif;
+      display: inline-block;
+      margin-right: -4px;
+      position: relative;
+      padding: 15px 20px;
+      /* background: #172830; */
+      cursor: pointer;
+      -webkit-transition: all 0.2s;
+      -moz-transition: all 0.2s;
+      -ms-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      transition: all 0.2s;
+    }
+    ul li:hover {
+      /* background: #172830; */
+      color: #666;
+    }
+    ul li ul {
+      padding: 0;
+      position: absolute;
+      top: 48px;
+      left: 0;
+      width: 150px;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      display: none;
+      opacity: 0;
+      visibility: hidden;
+      /* -webkit-transiton: opacity 0.2s;
+      -moz-transition: opacity 0.2s;
+      -ms-transition: opacity 0.2s;
+      -o-transition: opacity 0.2s; */
+      -transition: opacity 0.2s;
+    }
+    ul li ul li {
+      background: #172830;
+      display: block;
+      color: #fff;
+      text-shadow: 0 -1px 0 #000;
+    }
+    ul li ul li:hover {
+      background: grey;
+    }
+    ul li:hover ul {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+    }
+    .listRight {
+      left: auto !important;
+      right: 0 !important;
+    }
+    
+    /*===DROPDOWN ENDS====*/
+  
+  /* Menu Icon */
+  .menu-btn {
+    display: none;
+  }
+  
+  /* Footer */
+  
+  footer {
+    padding: 32px 0;
+    background: #dcedc8;
+    color: #000;
+    font-family: "Raleway";
+    text-align: center;
+  }
+  
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+  @media (max-width: 800px) {
+    .row {
+      flex-direction: column-reverse;
+    }
+    .col-25 {
+      margin-bottom: 20px;
+    }
+  
+    /*Navigation*/
+    nav {
+      display: flex;
+      height: 100vh;
+      transform: scaleY(0) translateY(1200px);
+      background: #172830;
+      transition: 0.4s;
+      position: fixed;
+    }
+  
+    nav.active {
+      transform: scaleY(1) translateY(0px);
+    }
+  
+    nav ul {
+      margin: 0 auto;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+    }
+  
+    nav ul li {
+      padding: 42px 0;
+    }
+  
+    nav li a {
+      font-size: 20px;
+      position: relative;
+    }
+  
+    nav li a:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 24px;
+      width: 60%;
+      margin: 0 auto;
+      border-bottom: 1px solid black;
+    }
+  
+    .menu-btn {
+      z-index: 10;
+      color: #474747;
+      display: block;
+      position: fixed;
+      right: 16px;
+      top: 16px;
+      font-size: 40px;
+      transition: 0.4s;
+      font-family: "Roboto Slab";
+      cursor: pointer;
+      transform: rotate(0deg);
+    }
+  
+    .menu-btn.active {
+      transform: rotate(45deg);
+    }
+  }
+  
+
+  
+  @media only screen and (max-width: 800px){
+    nav ul{
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background: #172830;
+        opacity: 0.8;
+        width: 100%;
+        overflow: hidden;
+        transition: max-height 0.6s;
+    }
+    nav ul li{
+      display: block;
+      margin-bottom: 10px;
+      margin-right: 50px;
+      margin-top: 10px;
+  }
+  nav ul li a{
+      color: whitesmoke;
+  }
+  
+  .menu-icon{
+      display: block;
+      cursor: pointer;
+  }
+  
+  }
+
+  .small-container{
+    max-width: 1080px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+  
+  }
+  
+  .single-product{
+    margin-top: 0px;
+  }
+  
+  .single-product .col-2 img{
+    padding: 0;
+    margin-right: 20px;
+  }
+  
+  .single-product .col-2{
+    padding: 20px 0;
+  }
+  
+  .single-product h4{
+    margin: 20px 0;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  .single-product select{
+    display: block;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  
+  .single-product input{
+    width: 50px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 20px;
+    margin-right: 10px;
+    border: 1px solid coral;
+  }
+  
+  input:focus{
+    outline: none;
+  }
+  
+  .single-product .fa{
+    color: #f1607d;
+    margin-left: 10px;
+  }
+  
+  .single-product .row{
+    text-align: left;
+  }
+  
+  .single-product h1{
+    font-size: 26px;
+    line-height: 32px;
+  }
+  
+  .row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 50px;
+    justify-content: space-around;
+  }
+  
+  .row-2{
+    justify-content: space-between;
+    margin: 100px auto 50px;
+  }
+  
+  .col-2{
+    flex-basis: 50%;
+    min-width: 300px;
+    padding:10px;
+  }
+  
+  .col-2 img{
+    max-width: 100%;
+    padding: 50px 0;
+  
+  }
+  
+  .col-2 h1{
+    font-size: 50px;
+    line-height: 60px;
+    margin: 25px 0;
+  }
+  
+  .col-2 .offer-img{
+    padding: 50px;
+  }
+  
+  
+  .small-img-row{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .small-img-col{
+    flex-basis: 24%;
+    cursor: pointer;
+  }
+  
+  .btn{
+    display: inline-block;
+    background: #172830;
+    color: white;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    width: 150px;
+  }
+  
+  .btn:hover{
+    background:#dcedc8;
+    color:black;
+  }
+  
+  select{
+    border: 1px solid coral;
+    padding: 5px;
+  }
+  
+  select:focus{
+    outline: none;
+  }
+  
+  .col-4{
+    flex-basis: 25%;
+    padding: 10px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+  }
+  
+  .col-4 img{
+    width: 100%;
+  }
+  .col-4 p{
+    font-size: 14px;
+  }
+  
+  .col-4:hover{
+    transform: translateY(-7px);
+  }
+  
+  .rating .fa{
+    color: #172830;
+  }
+  .pradeep{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .total-price{
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .total-price table{
+    border-top:  3px solid coral;
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .cart-page{
+    margin: 140px auto;
+  }
+  
+  .cart-info{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .menu-icon{
+    display: block;
+    cursor: pointer;
+}
+
+
+
+.menu-icon{
+  width: 28px;
+  margin-left: 20px;
+  display:none;
+}
+
+table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cart-page table
+{
+  border: none;
+}
+.total-price table
+{
+  border: none;
+}
+
+th{
+  text-align: left;
+  padding: 5px;
+  color: #ffffff;
+  background: #ca4560;
+  font-weight: normal;
+  height: 50px;
+  text-align: center;
+}
+
+td{
+  padding: 10px 5px;
+}
+
+td input{
+  width: 40px;
+  height: 30px;
+  padding: 5px;
+  text-align: center;
+}
+
+td a {
+  color: #ff0033;
+  font-size: 12px;
+}
+
+td img{
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+
+td:last-child{
+  text-align: right;
+}
+
+th:last-child{
+  text-align: right;
+}
+  
+  
+</style>

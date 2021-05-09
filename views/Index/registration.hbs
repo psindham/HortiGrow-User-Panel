@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <title>HortiGrow</title>
+  <link rel="shortcut icon" type="image/x-icon" href="/fav.ico" />
+  {{>register_SP}}
+  {{!-- <link rel="stylesheet" href="css/main_shailly.css" /> --}}
+</head>
+<body>
+  <div class="container">
+    
+    <form class="form-signin" method="POST" action="/Index/signInUser">
+  <center><h2 class="form-signin-heading text-center">Create Account</h2></center>
+  <label for="inputName" class="sr-only">Name</label>
+  <input type="text" id="inputName" style="margin-left: 50px;" class="form-control" placeholder="Name" name="name"required autofocus> <br/><br/>
+  <label for="inputUsername" class="sr-only">Address</label>
+  <input type="text" id="inputUsername" class="form-control" style="margin-left: 35px;" placeholder="Address" name="address" required autofocus><br/><br/>
+  <label for="inputEmail" class="sr-only">Email</label>
+  <input type="email" id="inputUsername" class="form-control" placeholder="Email" style="margin-left: 50px;" name="email" required autofocus><br/><br/>
+  <label for="inputUsername" class="sr-only">City</label>
+  <input type="text" id="inputUsername" class="form-control" placeholder="city" style="margin-left: 60px;" name="City" required autofocus><br/><br/>
+  <label for="inputUsername" class="sr-only">State</label>
+  <input type="text" id="inputUsername" class="form-control" placeholder="state" style="margin-left: 55px;" name="State" required autofocus><br/><br/>
+  <label for="inputUsername" class="sr-only">ZipCode</label>
+  <input type="text" id="inputUsername" class="form-control" placeholder="zipcode" name="zipcode" style="margin-left: 27px;" required autofocus><br/><br/>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required style="margin-left: 20px;" autofocus><br/><br/>
+  <label for="inputConfirmPassword" class="sr-only">Confirm Password</label>
+  <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" name="password2" required><br/><br/>
+<center>  <input type="submit" style="background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;" value="Register"  ></center>  
+      <br/>Already a registered user??     <a href="/Index/signInUser"  >Sign in</a>
+</form>
+
+  </div>
+</body>
