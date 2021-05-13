@@ -1,9 +1,13 @@
 const express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
+const user = require('../models/user');
+
 
 const Feedback = mongoose.model('Feedback');
 const Product = mongoose.model('Product');
+// const orders = mongoose.model('orders');
+const order = require('../models/orders');
 
 router.use(express.static(__dirname+''))
 
@@ -12,21 +16,47 @@ router.get('/', (req, res) => {
 });
 
 router.get('/feedback',(req, res)=>{
-    res.render("Index/feedback");
+    res.render("Index/feedback",{
+        user:req.user
+    });
+});
+
+router.get('/checkout',(req, res)=>{
+    res.render("Index/checkout");
 });
 
 router.get('/orderhistory',(req, res)=>{
-    res.render("Index/orderhistory");
+    order.
+    order.find({userID:new String(req.user._id).trim()})
+    .populate('cart.items.productId')
+    .exec(
+     (err, data) => {
+            // console.log("Hello ");
+            // console.log(user);
+            res.render("Index/orderhistory",{
+                orders:data,
+                IsFilled:true
+            })
+    })
+});
+
+router.get('/placed',(req, res)=>{
+    res.render("Index/placed");
 });
 
 router.get('/signInUser',(req, res)=>{
     res.render("Index/signInUser");
 });
 
+router.get('/Profile',(req, res)=>{
+        res.render("Index/profile", { 
+             user:req.user,
+        });
+});
+
 router.get('/registration',(req, res)=>{
     res.render("Index/registration");
 });
-
 
 router.get('/shop',(req, res)=>{
         Product.find((err, docs)=>{
@@ -41,9 +71,16 @@ router.get('/shop',(req, res)=>{
 });
 
 router.get('/cart',(req, res)=>{
-    res.render("Index/cart",{
-        IsFilled: true
-    });
+    req.user
+    .populate('cart.items.productId')
+    .execPopulate()
+    .then(user => {
+        res.render("Index/cart", { 
+             cart: user.cart,
+             IsFilled:true,
+        });
+    })
+    .catch(err => console.log(err));
 });
 
 router.post('/feed', (req, res) => {
@@ -62,17 +99,15 @@ router.get('/:id', (req, res) => {
     });
 });
 
-
-
-function insertFeedBack(req, res) {
+async function insertFeedBack(req, res) {
     var feedback = new Feedback();
     feedback.UserFullname= req.body.firstname;
     feedback.Email = req.body.email;
     feedback.Comments = req.body.Comments;
     feedback.save((err, doc) => {
-        if (!err)
+        if (!err){
             res.redirect('/index');
-        else {
+        }else {
             if (err.name == 'ValidationError') {
                 handleValidationError(err, req.body);
                 res.render("Index/shop");

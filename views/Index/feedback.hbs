@@ -16,6 +16,23 @@
   {{!-- <link rel="stylesheet" href="css/feedback.css">  --}}
   <title>HortiGrow</title>
   <link rel="shortcut icon" type="image/x-icon" href="/fav.ico">
+
+
+   <script>
+    function start() {
+      //Push.create('Hello World!')
+      Push.create("HortiGrow", {
+        body: "Thank you for Feedback!",
+        icon: 'https://banner2.cleanpng.com/20180411/eoq/kisspng-leaf-plant-logo-root-plant-5ace75f3a9ada5.454160361523480051695.jpg',
+        timeout: 3000,
+        onClick: function(){
+          window.focus();
+          this.close();
+        }
+      });
+    }
+  </script>
+  
 </head>
 
 <body>
@@ -52,7 +69,7 @@
       <div class="row">
         <div class="col-75">
           <div class="container">
-            <form action="">
+            <form action="/Index/feed" method="POST">
               <div class="row">
                 <div class="col-50">
                   <label for="fname"
@@ -63,6 +80,7 @@
                     id="fname"
                     name="firstname"
                     placeholder="John M. Doe"
+                    value={{user.UserFullname}}
                   />
                   <label for="email"
                     ><i class="fa fa-envelope"></i> Email</label
@@ -72,6 +90,7 @@
                     id="email"
                     name="email"
                     placeholder="john@example.com"
+                    value={{user.Email}}
                   />
                   <label for="adr"
                     ><i class="fa fa-address-card-o"></i> Comments</label
@@ -85,23 +104,24 @@
                 
                 </div>
               </div>
-              
-              <input type="submit" value="Submit Feedback" class="btn" />
+              <a href="javascript:void(0)" onclick="start();">Home</a>
+              <input   type="submit" value="Submit Feedback" class="btn" />
+
             </form>
           </div>
         </div>
         
       </div>
     </section>
-    
-    
-
     </article>
     <!-- Footer-->
     <footer>HortiGrow &copy; 2021</footer>
 
   <script src="/main.js">
   </script>
-  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/push.js/1.0.8/push.min.js"></script>
+  <script src="/serviceWorker.min.js"></script>
 </body>
 </html>

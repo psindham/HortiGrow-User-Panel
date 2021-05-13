@@ -36,13 +36,12 @@ const UserSchema= new mongoose.Schema({
             productId: {
                 type: mongoose.Types.ObjectId,
                 ref: 'Product',
-                required: true
             },
             qty: {
                 type: Number,
-                required: true
             }
         }],
+        totalPrice: Number
     }
 });
 
@@ -60,7 +59,7 @@ UserSchema.methods.addToCart = async function(productId) {
         if (!cart.totalPrice){
             cart.totalPrice = 0;
         }
-        cart.totalPrice += product.price;
+        cart.totalPrice += product.ProductPrice;
         return this.save();
     }
 };
@@ -72,6 +71,10 @@ UserSchema.methods.removeFromCart = function(productId){
         cart.items.splice(isExisting, 1);
         return this.save();
     }
+}
+
+UserSchema.methods.clearCart = function(){
+        this.clearCart();
 }
 
 module.exports= mongoose.model('User',UserSchema);

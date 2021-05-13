@@ -73,8 +73,8 @@
                 </select>
                 <input type="number" value="1">
                 {{!-- <form action="/add-to-cart/{{product._id}}" method="GET"> --}}
-                <form action="/add-to-cart/{{product._id}}" method="GET">
-                        {{!-- <input type="hidden" id="productid" name="productid" value={{}}> --}}
+                <form action="/add-to-cart" method="POST">
+                        <input type="hidden" id="productid" name="productid" value={{product._id}}>
                         <button type="submit" class="btn btn-primary">Add to Cart</button>
                  </form>
                 <h3>Product Details <i class="fa fa-indent"></i></h3>

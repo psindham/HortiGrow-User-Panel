@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:800|Roboto+Slab"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Noto+Sans&family=Original+Surfer&display=swap"
+      rel="stylesheet"
+    />
+    {{>styleshu}}
+    <title>HortiGrow</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/fav.ico" />
+  </head>
+  <body>
+    <!-- HEADER SECTION-->
+     <!-- Navbar -->
+     <nav>
+        <ul>
+          <li><a href="/index">Home</a></li>
+          <li><a href="/Index/shop">Shop</a></li>
+          <li><a href="/Index/feedback">Feedback</a></li>
+          <li>
+            <a href="/Index/cart"><i class="fa fa-shopping-cart"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-user"></i></a>
+             <ul class="listRight">
+              <li style="padding-left: -10px;"><a href="/Index/Profile">Profile</a></li>
+              <li style="padding-left: -10px;"><a href="/Index/orderhistory">Orders</a></li>
+              <li><a href="/Index/signInUser">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+    <!-- Responsive Navbar-->
+    <section class="menu-btn">+</section>
+
+    <!-- FORM AND CART SECTION-->
+    <section class="form-cart">
+      <h2>Review You Order</h2>
+      <p>By Placing your order you agree to HortiGrow's terms of conditions.</p>
+      <div class="row">
+        <div class="col-75">
+          <div class="container">
+            <form action="/ConfirmOrder" method="POST" >
+              <div class="row">
+                <div class="col-50">
+                  <h3>Shipping Address</h3>
+                  <label for="fname"
+                    ><i class="fa fa-user"></i> Full Name</label
+                  >
+                  <input
+                    type="text"
+                    id="fname"
+                    name="firstname"
+                    placeholder="John M. Doe"
+                    value={{user.UserFullname}}
+                  />
+                  <label for="email"
+                    ><i class="fa fa-envelope"></i> Email</label
+                  >
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="john@example.com"
+                     value={{user.Email}}
+                  />
+                  <label for="adr"
+                    ><i class="fa fa-address-card-o"></i> Address</label
+                  >
+                  <input
+                    type="text"
+                    id="adr"
+                    name="address"
+                    placeholder="542 W. 15th Street"
+                     value={{user.Address}}
+                  />
+                  <label for="city"
+                    ><i class="fa fa-institution"></i> City</label
+                  >
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    placeholder="New York"
+                     value={{user.City}}
+                  />
+
+                  <div class="row">
+                    <div class="col-50">
+                      <label for="state">State</label>
+                      <input
+                        type="text"
+                        id="state"
+                        name="state"
+                        placeholder="NY"
+                         value={{user.State}}
+                      />
+                    </div>
+                    <div class="col-50">
+                      <label for="zip">Zip</label>
+                      <input
+                        type="text"
+                        id="zip"
+                        name="zip"
+                        placeholder="10001"
+                         value={{user.Zipcode}}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <label>
+                <input type="checkbox" checked="checked" name="sameadr" />
+                Shipping address same as billing
+              </label>
+              <input type="submit" value="Continue to checkout" class="btn" />
+            </form>
+          </div>
+        </div>
+        <div class="col-25">
+          <div class="container">
+            <h4>
+              Cart
+              <span class="price" style="color: black">
+                <i class="fa fa-shopping-cart"></i> <b>4</b>
+              </span>
+            </h4>
+            {{!-- <p><a href="#">Product 1</a> <span class="price">$15</span></p> --}}
+            {{#each cart.items}}
+               {{#each this}}
+                 {{#if _id}}
+                    {{#if productId.ProductPrice}}
+                      <p><a href="/Index/{{productId._id}}">{{productId.ProductName}}</a> <span class="price">{{qty}}</span></p>
+                     {{/if}}
+                    {{/if}}     
+              {{/each}}
+            {{/each}}
+            <hr />
+            <p>
+              Total <span class="price" style="color: black"><b> <td>{{user.cart.totalPrice}}</td>  </b></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer-->
+    <footer>HortiGrow &copy; 2021</footer>
+    <script src="/shubhi.js"></script>
+  </body>
+</html>

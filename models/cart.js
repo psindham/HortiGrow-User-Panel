@@ -3,7 +3,6 @@ let cart = null;
 module.exports = class Cart {
 
     static save(product) {
-
         if (cart === null) {
             cart = { products: [], totalPrice: 10 };
         }
@@ -28,5 +27,9 @@ module.exports = class Cart {
         if (isExisting >= 0) {
             cart.products.splice(isExisting, 1);
         }
-    }           
+    }      
+    
+    static clearCart(){
+        cart = null;
+    }
 }

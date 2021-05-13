@@ -15,7 +15,7 @@
 {{>orders}}
   {{!-- <link rel="stylesheet" href="css/orders.css">  --}}
   <title>HortiGrow</title>
-  <link rel="shortcut icon" type="image/x-icon" href="img/fav.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/fav.ico">
 </head>
 
 <body>
@@ -49,48 +49,58 @@
    <section class="order">
     <h1>Order History</h1>
 <div>
-    <table>
-        <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>marks</th>
-        <th>marks</th>
-        <th>marks</th>
-        <th>marks</th>
-        <th>marks</th>
-        <th>marks</th>
-        </tr>
-        <tr>
-        <td>JACK</td>
-        <td>ROY</td>
-        <td>50</td>
-        <td>60</td>
-        <td>10</td>
-        <td>20</td>
-        <td>40</td>
-        <td>50</td>
-        </tr>
-        <tr>
-        <td>Evelyn</td>
-        <td>Monroe</td>
-        <td>24</td>
-        <td>14</td>
-        <td>22</td>
-        <td>44</td>
-        <td>55</td>
-        <td>44</td>
-        </tr>
-        <tr>
-        <td>Joe</td>
-        <td>Anderson</td>
-        <td>54</td>
-        <td>22</td>
-        <td>99</td>
-        <td>55</td>
-        <td>91</td>
-        <td>61</td>
-        </tr>
-    </table>
+            {{#each orders}}
+              <p style="color: green; font-size:medium"> Order ID {{_id}} </p>  
+          
+              <p style="color: green;"> Date Of Order {{date}}</p>
+              <div class="small-container cart-page">
+                <table>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Sub Total</th>
+                    </tr>
+                  {{#each cart.items}}
+                    {{#each this}}
+                      {{#if _id}}
+                          {{#if productId.ProductPrice}}
+                          <tr>
+                              <td>
+                                  <div class="cart-info">
+                                      <img src="/{{productId.ProductImage}}" alt="">
+                                      <div>
+                                          <p>{{productId.ProductName}}</p>
+                                          <small>{{productId.ProductPrice}}</small>
+                                          <br>
+                                      </div>
+                                  </div>
+                              </td>
+                              <td> <input type="number" value={{qty}}></td>
+                              {{!-- <td>{{multiply productId.ProductPrice qty}}</td> --}}
+                          </tr>
+                        {{/if}}
+                        {{/if}}
+                        
+                    {{/each}} 
+                    {{/each}}
+              <div class="total-price">
+                    <table>
+                        <tr>
+                            <td>Sub Total</td>
+                            <td>{{cart.totalPrice}}</td>  
+                        </tr>
+                        <tr>
+                            <td>Grand Total</td>
+                            <td>{{cart.totalPrice}}</td>   
+                        </tr>
+                    </table>
+                </div>
+              {{/each}}
+        
+        </table>
+    
+    
+    </div>
 </div>
 </section>
     

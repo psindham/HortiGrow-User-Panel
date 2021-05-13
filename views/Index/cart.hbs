@@ -50,67 +50,63 @@
                 <th>Quantity</th>
                 <th>Sub Total</th>
             </tr>
-            <tr>
-                <td>
-                    <div class="cart-info">
-                        <img src="/lilyplant.jpg" alt="">
-                        <div>
-                            <p>Lily Seedbeds</p>
-                            <small>Rs.800</small>
-                            <br>
-                            <a href="">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td> <input type="" value="2"></td>
-                <td>Rs.1600</td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="cart-info">
-                        <img src="/marigold plant.jpg" alt="">
-                        <div>
-                            <p>Marigold Plants </p>
-                            <small>Rs.250</small>
-                            <br>
-                            <a href="#">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td> <input type="number" value="3"></td>
-                <td>Rs.750</td>
-            </tr>
+            {{#if IsFilled}}
+            {{#each cart.items}}
+               {{#each this}}
+                 {{#if _id}}
+                    {{#if productId.ProductPrice}}
+                    <tr>
+                        <td>
+                            <div class="cart-info">
+                                <img src="/{{productId.ProductImage}}" alt="">
+                                <div>
+                                    <p>{{productId.ProductName}}</p>
+                                    <small>{{productId.ProductPrice}}</small>
+                                    <br>
+                                     <form action="/delete-cart" method="POST">
+                                        <input type="hidden" name="prodId" value={{productId._id}}>
+                                        <button type="submit" class="btn btn-primary">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </td>
+                        <td> <input type="number" value={{qty}}></td>
+                        {{!-- <td>{{multiply productId.ProductPrice qty}}</td> --}}
+                    </tr>
+                    {{/if}}
+                    {{/if}}     
+              {{/each}}
+            {{/each}}
+            
         </table>
-    
+    {{/if}}
     <div class="total-price">
         <table>
             <tr>
                 <td>Sub Total</td>
-                <td>Rs.2350</td>
+               <td>{{cart.totalPrice}}</td>  
             </tr>
-            <tr>
+            {{!-- <tr>
                 <td>Tax</td>
                 <td>Rs.50</td>
-            </tr>
+            </tr> --}}
             <tr>
                 <td>Grand Total</td>
-                <td>Rs.2400</td>
+               <td>{{cart.totalPrice}}</td>   
             </tr>
             <tr>
-                    <button type="submit" class="btn btn-primary">Pay 2400</button>
+                <form action="/OrderPlace" method="POST"> 
+                    <button type="submit" class="btn btn-primary">Place Order</button>
+                </form>
             </tr>
         </table>
     </div>
     </div>
-
-      <!-- Footer-->
-    
-
+    <!-- Footer-->
     </article>
     <footer>HortiGrow &copy; 2021</footer>
-
 <script src="/main.js"> </script>
-
-
+<style>
+</style>
 </body>
 </html>

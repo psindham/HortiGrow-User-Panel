@@ -230,35 +230,138 @@ html {
   }
   
   }
-
-
-
-  .order h1
-  {
-    margin-left:  20px;
-    margin-top: 150px;
-    font-size: 20pt;
+ select{
+    border: 1px solid coral;
+    padding: 5px;
   }
-
-
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 90%;
-    border: 1px solid rgb(0, 0, 0);
-    margin-bottom: 20px;
-    margin-left: 20px;
+  
+  select:focus{
+    outline: none;
+  }
+  
+  .col-4{
+    flex-basis: 25%;
+    padding: 10px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+  }
+  
+  .col-4 img{
+    width: 100%;
+  }
+  .col-4 p{
+    font-size: 14px;
+  }
+  
+  .col-4:hover{
+    transform: translateY(-7px);
+  }
+  
+  .rating .fa{
+    color: #172830;
+  }
+  .pradeep{
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .small-container{
+    max-width: 1080px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
   
   }
-  .order table
-  {
-      width: 70%;
+  .total-price{
+    display: flex;
+    justify-content: flex-end;
   }
-  th, td {
-    text-align: left;
-    padding: 8px;
+  
+  .total-price table{
+    border-top:  3px solid coral;
+    width: 100%;
+    max-width: 350px;
   }
-  tr:nth-child(even){background-color: #f2f2f2}
+  
+  .cart-page{
+    margin: 10px auto;
+  }
+  
+  .cart-info{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .menu-icon{
+    display: block;
+    cursor: pointer;
+}
+.menu-icon{
+  width: 28px;
+  margin-left: 20px;
+  display:none;
+}
+.order h1
+{
+  margin-left:  20px;
+  margin-top: 150px;
+  font-size: 20pt;
+}
+
+table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cart-page table
+{
+  border: none;
+}
+.total-price table
+{
+  border: none;
+}
+
+th{
+  text-align: left;
+  padding: 5px;
+  color: #ffffff;
+  background: #ca4560;
+  font-weight: normal;
+  height: 50px;
+  text-align: center;
+}
+
+td{
+  padding: 10px 5px;
+}
+
+td input{
+  width: 40px;
+  height: 30px;
+  padding: 5px;
+  text-align: center;
+}
+
+td a {
+  color: #ff0033;
+  font-size: 12px;
+}
+
+td img{
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+
+td:last-child{
+  text-align: right;
+}
+
+th:last-child{
+  text-align: right;
+}
   
   
 </style>
